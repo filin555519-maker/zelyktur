@@ -6,14 +6,15 @@ let cart = [];
 function addTour(name, price, image){
 
     cart.push({
-        name:name,
-        price:price,
-        image:image
+        name: name,
+        price: price,
+        image: image
     });
 
     updateCart();
 
 }
+
 
 
 /* ОБНОВЛЕНИЕ КОРЗИНЫ */
@@ -30,11 +31,12 @@ function updateCart(){
     }
 
 
-    let mobile = document.getElementById("mobile-cart-count");
+    let mobileCount = document.getElementById("mobile-cart-count");
 
-    if(mobile){
-        mobile.innerHTML = count;
+    if(mobileCount){
+        mobileCount.innerHTML = count;
     }
+
 
 
     let items = document.getElementById("cart-items");
@@ -45,6 +47,7 @@ function updateCart(){
     items.innerHTML = "";
 
     let total = 0;
+
 
 
     cart.forEach((item,index)=>{
@@ -72,16 +75,17 @@ function updateCart(){
 
 
 
-    let totalBox = document.getElementById("cart-total");
+    let totalBlock = document.getElementById("cart-total");
 
-    if(totalBox){
+    if(totalBlock){
 
-        totalBox.innerHTML =
+        totalBlock.innerHTML =
         "Итого: " + total + " ₽";
 
     }
 
 }
+
 
 
 
@@ -101,27 +105,36 @@ function removeItem(index){
 
 function openCart(){
 
-    document
-    .getElementById("cart-panel")
-    .classList.add("active");
+    let cartPanel = document.getElementById("cart-panel");
+
+    if(cartPanel){
+
+        cartPanel.classList.add("active");
+
+    }
 
 }
 
 
 
-/* ЗАКРЫТЬ КОРЗИНУ */
+/* ЗАКРЫТЬ */
 
 function closeCart(){
 
-    document
-    .getElementById("cart-panel")
-    .classList.remove("active");
+    let cartPanel = document.getElementById("cart-panel");
+
+    if(cartPanel){
+
+        cartPanel.classList.remove("active");
+
+    }
 
 }
 
 
 
-/* ОФОРМЛЕНИЕ ЗАКАЗА */
+
+/* ЗАКАЗ */
 
 function makeOrder(){
 
@@ -150,28 +163,89 @@ function closeCallWindow(){
 
 
 
+
+/* ТЁМНАЯ ТЕМА */
+
+function toggleTheme(){
+
+    document.body.classList.toggle("dark");
+
+
+    let button = document.querySelector(".theme-button");
+
+
+    if(document.body.classList.contains("dark")){
+
+        button.innerHTML="☀️";
+
+        localStorage.setItem("theme","dark");
+
+    }
+    else{
+
+        button.innerHTML="🌙";
+
+        localStorage.setItem("theme","light");
+
+    }
+
+}
+
+
+
+
+/* ЗАГРУЗКА ТЕМЫ */
+
+window.onload=function(){
+
+
+    updateCart();
+
+
+    if(localStorage.getItem("theme") === "dark"){
+
+
+        document.body.classList.add("dark");
+
+
+        let button=document.querySelector(".theme-button");
+
+
+        if(button){
+
+            button.innerHTML="☀️";
+
+        }
+
+    }
+
+};
+
+
+
+
+
 /* ПОИСК */
 
 function searchTours(){
 
-    let input =
-    document
+
+    let input=document
     .getElementById("searchInput")
     .value
     .toLowerCase();
 
 
 
-    let cards =
-    document.querySelectorAll(".card");
+    let cards=document.querySelectorAll(".card");
 
 
 
     cards.forEach(card=>{
 
 
-        let text =
-        card.innerText.toLowerCase();
+        let text=card.innerText.toLowerCase();
+
 
 
         if(text.includes(input)){
@@ -187,445 +261,6 @@ function searchTours(){
 
 
     });
-
-}
-
-
-
-/* ТЁМНАЯ ТЕМА */
-
-function toggleTheme(){
-
-    document.body.classList.toggle("dark");
-
-
-    let button =
-    document.querySelector(".theme-button");
-
-
-    if(document.body.classList.contains("dark")){
-
-
-        if(button){
-            button.innerHTML="☀️";
-        }
-
-
-        localStorage.setItem(
-            "theme",
-            "dark"
-        );
-
-
-    }else{
-
-
-        if(button){
-            button.innerHTML="🌙";
-        }
-
-
-        localStorage.setItem(
-            "theme",
-            "light"
-        );
-
-    }
-
-}
-
-
-
-
-/* СОХРАНЕНИЕ ТЕМЫ */
-
-window.addEventListener("load",function(){
-
-
-    if(localStorage.getItem("theme") === "dark"){
-
-
-        document.body.classList.add("dark");
-
-
-        let button =
-        document.querySelector(".theme-button");
-
-
-        if(button){
-
-            button.innerHTML="☀️";
-
-        }
-
-
-    }
-
-
-});
-/* =========================
-   МОБИЛЬНАЯ ВЕРСИЯ ZELYKTUR
-========================= */
-
-
-@media (max-width: 768px) {
-
-
-/* HEADER */
-
-.header {
-
-    padding:15px;
-
-    flex-wrap:wrap;
-
-}
-
-
-.logo img {
-
-    width:45px;
-    height:45px;
-
-}
-
-
-.logo h1 {
-
-    font-size:22px;
-
-}
-
-
-.logo p {
-
-    font-size:11px;
-
-}
-
-
-/* скрываем обычное меню */
-
-.header nav {
-
-    display:none;
-
-}
-
-
-
-/* кнопки */
-
-.theme-button,
-.cart-button {
-
-    width:42px;
-    height:42px;
-
-}
-
-
-/* HERO */
-
-.hero {
-
-    min-height:520px;
-
-}
-
-
-.hero-content {
-
-    padding:25px;
-
-    text-align:center;
-
-}
-
-
-.hero h2 {
-
-    font-size:30px;
-
-}
-
-
-.hero p {
-
-    font-size:16px;
-
-}
-
-
-
-/* кнопки */
-
-.hero-buttons {
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
-
-}
-
-
-.btn-primary,
-.btn-secondary {
-
-    width:100%;
-
-    text-align:center;
-
-    padding:16px;
-
-}
-
-
-
-/* ПОИСК */
-
-.search {
-
-    padding:15px;
-
-}
-
-
-.search input {
-
-    width:100%;
-
-    height:50px;
-
-    border-radius:20px;
-
-}
-
-
-
-/* КАРТОЧКИ */
-
-.cards {
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:20px;
-
-    padding:15px;
-
-}
-
-
-.card {
-
-    width:100%;
-
-    border-radius:25px;
-
-    overflow:hidden;
-
-}
-
-
-
-.card img {
-
-    width:100%;
-
-    height:220px;
-
-    object-fit:cover;
-
-}
-
-
-
-.card-content {
-
-    padding:20px;
-
-}
-
-
-
-.card h3 {
-
-    font-size:24px;
-
-}
-
-
-
-/* кнопки карточки */
-
-.buttons {
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:10px;
-
-}
-
-
-
-.details-btn,
-.cart-btn {
-
-    width:100%;
-
-    padding:15px;
-
-    border-radius:15px;
-
-}
-
-
-
-/* ГАЛЕРЕЯ */
-
-.gallery-grid {
-
-    grid-template-columns:1fr 1fr;
-
-    gap:10px;
-
-}
-
-
-.gallery-grid img {
-
-    height:140px;
-
-    object-fit:cover;
-
-    border-radius:15px;
-
-}
-
-
-
-/* О НАС */
-
-.advantages {
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:15px;
-
-}
-
-
-
-.advantage {
-
-    border-radius:20px;
-
-    padding:20px;
-
-}
-
-
-
-/* КОНТАКТЫ */
-
-.contact-card {
-
-    margin:15px;
-
-    padding:25px;
-
-    border-radius:25px;
-
-}
-
-
-/* МОБИЛЬНАЯ НАВИГАЦИЯ */
-
-.mobile-nav {
-
-    position:fixed;
-
-    bottom:0;
-
-    left:0;
-
-    right:0;
-
-    height:75px;
-
-    display:flex;
-
-    justify-content:space-around;
-
-    align-items:center;
-
-    z-index:1000;
-
-}
-
-
-
-.mobile-nav a,
-.mobile-nav button {
-
-    font-size:12px;
-
-}
-
-
-
-.mobile-nav span {
-
-    font-size:25px;
-
-}
-
-
-
-/* КОРЗИНА */
-
-#cart-panel {
-
-    width:100%;
-
-    height:90%;
-
-    bottom:0;
-
-    top:auto;
-
-    border-radius:30px 30px 0 0;
-
-}
-
-
-/* ОКНО ЗВОНКА */
-
-.call-box {
-
-    width:90%;
-
-    border-radius:30px;
-
-}
-
-
-
-/* FOOTER */
-
-footer {
-
-    padding-bottom:100px;
-
-}
 
 
 }
