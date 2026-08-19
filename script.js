@@ -1,4 +1,4 @@
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
 /* ДОБАВЛЕНИЕ В КОРЗИНУ */
@@ -264,3 +264,42 @@ function searchTours(){
 
 
 }
+// ===== МОБИЛЬНОЕ МЕНЮ =====
+
+
+function openMenu(){
+
+    document
+    .getElementById("mobileMenu")
+    .classList.add("active");
+
+}
+
+
+
+function closeMenu(){
+
+    document
+    .getElementById("mobileMenu")
+    .classList.remove("active");
+
+}
+// скрытие загрузки после открытия сайта
+
+window.addEventListener("load",()=>{
+
+    let loader = document.getElementById("loader");
+
+    if(loader){
+
+        loader.classList.add("hide");
+
+        setTimeout(()=>{
+
+            loader.style.display="none";
+
+        },800);
+
+    }
+
+});

@@ -1220,3 +1220,995 @@ footer {
 
 
 }
+/* ===== МОБИЛЬНЫЙ ДИЗАЙН ZELYKTUR ===== */
+
+@media(max-width:768px){
+
+
+body{
+    padding-bottom:80px;
+}
+
+
+/* ШАПКА */
+
+.header{
+
+    padding:15px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+.logo img{
+
+    width:45px;
+
+    height:45px;
+
+}
+
+
+.logo h1{
+
+    font-size:22px;
+
+}
+
+
+.logo p{
+
+    display:none;
+
+}
+
+
+nav{
+
+    display:none;
+
+}
+
+
+/* КНОПКИ */
+
+.theme-button,
+.cart-button{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+}
+
+
+
+/* HERO */
+
+.hero{
+
+    height:500px;
+
+    border-radius:0 0 35px 35px;
+
+}
+
+
+.hero-content{
+
+    padding:25px;
+
+    text-align:center;
+
+}
+
+
+
+.hero h2{
+
+    font-size:32px;
+
+}
+
+
+
+/* КАРТОЧКИ */
+
+
+.places{
+
+    padding:20px 15px;
+
+}
+
+
+.cards{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+
+
+.card{
+
+    width:100%;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+}
+
+
+
+.card img{
+
+    height:230px;
+
+    object-fit:cover;
+
+}
+
+
+
+/* КНОПКИ */
+
+.buttons{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+
+.cart-btn,
+.details-btn{
+
+    width:100%;
+
+    text-align:center;
+
+    padding:15px;
+
+    border-radius:20px;
+
+}
+
+
+
+/* МОБИЛЬНАЯ НАВИГАЦИЯ */
+
+.mobile-nav{
+
+    position:fixed;
+
+    bottom:15px;
+
+    left:15px;
+
+    right:15px;
+
+    height:65px;
+
+    background:white;
+
+    border-radius:25px;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+    z-index:999;
+
+}
+
+
+.mobile-nav a,
+.mobile-nav button{
+
+    border:0;
+
+    background:none;
+
+    font-size:12px;
+
+}
+
+
+
+.mobile-nav span{
+
+    display:block;
+
+    font-size:22px;
+
+}
+
+
+
+/* КОРЗИНА */
+
+
+#cart-panel{
+
+    width:100%;
+
+    height:90%;
+
+    bottom:0;
+
+    border-radius:30px 30px 0 0;
+
+}
+
+
+}
+/* ===== КРАСИВЫЙ ЛОГОТИП ===== */
+
+.logo img{
+
+    width:75px;
+    height:75px;
+
+    object-fit:contain;
+
+    border-radius:50%;
+
+    background:white;
+
+    padding:5px;
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,0.18);
+
+    transition:0.3s;
+
+}
+
+
+.logo img:hover{
+
+    transform:scale(1.08);
+
+}
+
+
+
+/* название */
+
+.logo h1{
+
+    background:linear-gradient(
+    90deg,
+    #0066ff,
+    #00bfff
+    );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+    font-weight:800;
+
+}
+
+
+
+/* мобильный логотип */
+
+@media(max-width:768px){
+
+
+.logo img{
+
+    width:50px;
+
+    height:50px;
+
+}
+
+
+.logo h1{
+
+    font-size:20px;
+
+}
+
+
+}
+/* ===== АНИМАЦИЯ ЛОГОТИПА ===== */
+
+.logo{
+
+    animation: logoAppear 1s ease forwards;
+
+}
+
+
+
+.logo img{
+
+    animation: logoZoom 1.2s ease forwards;
+
+}
+
+
+
+/* появление всей шапки */
+
+@keyframes logoAppear{
+
+
+from{
+
+    opacity:0;
+
+    transform:translateY(-30px);
+
+}
+
+
+to{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+}
+
+
+
+/* увеличение логотипа */
+
+@keyframes logoZoom{
+
+
+0%{
+
+    opacity:0;
+
+    transform:scale(0.5) rotate(-20deg);
+
+}
+
+
+70%{
+
+    transform:scale(1.1) rotate(5deg);
+
+}
+
+
+100%{
+
+    opacity:1;
+
+    transform:scale(1) rotate(0);
+
+}
+
+
+}
+/* ===== ФОН ЛОГОТИПА ПО ТЕМЕ ===== */
+
+/* ЛОГОТИП */
+
+.logo img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    border-radius:50%;
+    padding:8px;
+    background:white;
+    transition:0.5s;
+    animation: logoShow 1s ease;
+    box-shadow:0 0 20px rgba(0,0,0,0.15);
+}
+
+
+/* анимация появления */
+
+@keyframes logoShow{
+
+    from{
+        opacity:0;
+        transform:scale(0.5) rotate(-180deg);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) rotate(0);
+    }
+
+}
+
+
+/* ТЁМНАЯ ТЕМА */
+
+body.dark .logo img{
+
+    background:#111;
+
+    box-shadow:
+    0 0 25px rgba(255,255,255,0.25);
+
+}
+
+
+
+/* ТЁМНАЯ ТЕМА */
+
+body.dark /{
+
+    background:#1b1b1b;
+
+    box-shadow:
+    0 8px 25px rgba(255,255,255,0.12);
+
+}
+/* ===== КРАСИВЫЙ ЛОГОТИП ===== */
+
+.logo img{
+    width:80px;
+    height:80px;
+    object-fit:contain;
+    border-radius:50%;
+    padding:10px;
+
+    background:white;
+
+    box-shadow:
+    0 0 25px rgba(0,0,0,0.25);
+
+    animation: logoShow 1s ease;
+    transition:0.5s;
+}
+
+
+/* появление */
+
+@keyframes logoShow{
+
+    from{
+        opacity:0;
+        transform:scale(0.5) rotate(-20deg);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) rotate(0);
+    }
+
+}
+
+
+
+/* ===== ТЁМНАЯ ТЕМА ЛОГО ===== */
+
+body.dark .logo img{
+
+    background:#111;
+
+    box-shadow:
+    0 0 30px rgba(255,255,255,0.15);
+
+}
+
+
+
+/* лёгкий эффект при наведении */
+
+.logo img:hover{
+
+    transform:scale(1.08) rotate(3deg);
+
+}
+/* ===== МОБИЛЬНЫЙ ИНТЕРФЕЙС ===== */
+
+@media(max-width:768px){
+
+
+/* ШАПКА */
+
+.header{
+
+    height:auto;
+    padding:15px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+
+.logo img{
+
+    width:55px;
+    height:55px;
+
+}
+
+
+.logo h1{
+
+    font-size:22px;
+
+}
+
+
+.logo p{
+
+    font-size:11px;
+
+}
+
+
+
+/* скрываем обычное меню */
+
+.header nav{
+
+    display:none;
+
+}
+
+
+
+/* кнопки справа */
+
+.theme-button,
+.cart-button{
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    font-size:20px;
+
+}
+
+
+
+/* ГЛАВНЫЙ БЛОК */
+
+
+.hero{
+
+    min-height:500px;
+
+    padding:20px;
+
+}
+
+
+.hero h2{
+
+    font-size:32px;
+
+    line-height:1.2;
+
+}
+
+
+.hero p{
+
+    font-size:16px;
+
+}
+
+
+
+/* КНОПКИ */
+
+.hero-buttons{
+
+    flex-direction:column;
+
+}
+
+
+.btn-primary,
+.btn-secondary{
+
+    width:100%;
+
+    text-align:center;
+
+}
+
+
+
+/* КАРТОЧКИ */
+
+
+.cards{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+    padding:15px;
+
+}
+
+
+
+.card{
+
+    width:100%;
+
+    border-radius:25px;
+
+}
+
+
+
+.card img{
+
+    height:220px;
+
+}
+
+
+
+
+.card h3{
+
+    font-size:25px;
+
+}
+
+
+
+
+.buttons{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+
+
+.cart-btn,
+.details-btn{
+
+    flex:1;
+
+    padding:14px 5px;
+
+}
+
+
+
+/* ПОИСК */
+
+
+.search input{
+
+    width:90%;
+
+    margin:15px;
+
+    height:50px;
+
+    border-radius:25px;
+
+}
+
+
+
+/* ГАЛЕРЕЯ */
+
+
+.gallery-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+
+/* О НАС */
+
+
+.advantages{
+
+    flex-direction:column;
+
+}
+
+
+.advantage{
+
+    width:90%;
+
+}
+
+
+
+/* КОНТАКТЫ */
+
+
+.contact-card{
+
+    margin:15px;
+
+    border-radius:25px;
+
+}
+
+
+
+/* НИЖНЯЯ ПАНЕЛЬ */
+
+
+.mobile-nav{
+
+    display:flex;
+
+    position:fixed;
+
+    bottom:0;
+
+    left:0;
+
+    width:100%;
+
+    height:75px;
+
+    background:white;
+
+    box-shadow:0 -5px 25px rgba(0,0,0,.15);
+
+    z-index:999;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+}
+
+
+
+body.dark .mobile-nav{
+
+    background:#111;
+
+}
+
+
+
+.mobile-nav a,
+.mobile-nav button{
+
+    background:none;
+
+    border:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    font-size:12px;
+
+}
+
+
+
+.mobile-nav span{
+
+    font-size:25px;
+
+}
+
+
+
+footer{
+
+    margin-bottom:80px;
+
+}
+
+
+}
+/* ===== БУРГЕР МЕНЮ ===== */
+
+.burger{
+    display:none;
+    background:none;
+    border:0;
+    font-size:32px;
+}
+
+
+/* меню справа */
+
+.mobile-menu{
+
+    display:none;
+
+    position:fixed;
+
+    top:0;
+    right:0;
+
+    width:280px;
+    height:100vh;
+
+    background:white;
+
+    z-index:3000;
+
+    padding-top:80px;
+
+    box-shadow:-10px 0 30px rgba(0,0,0,.3);
+
+    flex-direction:column;
+
+}
+
+
+.mobile-menu a,
+.mobile-menu button{
+
+    padding:20px;
+
+    font-size:18px;
+
+    border:0;
+
+    background:none;
+
+    text-align:left;
+
+}
+
+
+
+/* тёмная тема */
+
+body.dark .mobile-menu{
+
+    background:#111;
+
+    color:white;
+
+}
+
+
+
+/* телефон */
+
+@media(max-width:768px){
+
+    .burger{
+
+        display:block;
+
+    }
+
+
+    header nav{
+
+        display:none;
+
+    }
+
+
+    .mobile-menu.active{
+
+        display:flex;
+
+    }
+
+}
+#loader{
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:white;
+
+display:flex;
+flex-direction:column;
+
+justify-content:center;
+align-items:center;
+
+z-index:9999;
+
+animation:loaderShow 0.8s;
+
+}
+
+
+#loader img{
+
+width:120px;
+
+animation:logoPop 1s;
+
+}
+
+
+
+#loader h2{
+
+font-size:40px;
+
+margin:15px;
+
+}
+
+
+
+#loader p{
+
+color:#777;
+
+}
+
+
+
+#loader.hide{
+
+opacity:0;
+
+transition:0.8s;
+
+}
+
+
+
+@keyframes logoPop{
+
+0%{
+
+transform:scale(0.5);
+opacity:0;
+
+}
+
+100%{
+
+transform:scale(1);
+opacity:1;
+
+}
+
+}
