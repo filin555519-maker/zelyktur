@@ -303,3 +303,45 @@ window.addEventListener("load",()=>{
     }
 
 });
+/* =====================================================
+   ZELYTOUR — АНИМАЦИИ ПРИ ПРОКРУТКЕ
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const elements = document.querySelectorAll(
+        "section, .tour-card, .card, .gallery-item, .about"
+    );
+
+    elements.forEach(element => {
+        element.classList.add("reveal");
+    });
+
+
+    const observer = new IntersectionObserver(
+        (entries, observer) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+
+});
