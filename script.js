@@ -1,158 +1,631 @@
-let cart = JSON.parse(localStorage.getItem("zelytourCart")) || [];
+let cart = [];
 
-updateCart();
 
-function saveCart() {
-    localStorage.setItem("zelytourCart", JSON.stringify(cart));
-}
+/* ДОБАВЛЕНИЕ В КОРЗИНУ */
 
-function addTour(name, price, image) {
+function addTour(name, price, image){
 
-    const item = cart.find(tour => tour.name === name);
+    cart.push({
+        name:name,
+        price:price,
+        image:image
+    });
 
-    if (item) {
-        item.count++;
-    } else {
-        cart.push({
-            name: name,
-            price: price,
-            image: image,
-            count: 1
-        });
-    }
-
-    saveCart();
     updateCart();
 
-    alert("✅ Экскурсия добавлена в корзину!");
 }
 
-function updateCart() {
 
-    const cartItems = document.getElementById("cart-items");
-    const cartCount = document.getElementById("cart-count");
-    const total = document.getElementById("cart-total");
+/* ОБНОВЛЕНИЕ КОРЗИНЫ */
 
-    if (!cartItems || !cartCount || !total) return;
+function updateCart(){
 
-    cartItems.innerHTML = "";
+    let count = cart.length;
 
-    let sum = 0;
-    let count = 0;
 
-    cart.forEach((item, index) => {
+    let cartCount = document.getElementById("cart-count");
 
-        sum += item.price * item.count;
-        count += item.count;
+    if(cartCount){
+        cartCount.innerHTML = count;
+    }
 
-        cartItems.innerHTML += `
+
+    let mobile = document.getElementById("mobile-cart-count");
+
+    if(mobile){
+        mobile.innerHTML = count;
+    }
+
+
+    let items = document.getElementById("cart-items");
+
+    if(!items) return;
+
+
+    items.innerHTML = "";
+
+    let total = 0;
+
+
+    cart.forEach((item,index)=>{
+
+        total += item.price;
+
+
+        items.innerHTML += `
+
         <div class="cart-item">
 
-            <img src="${item.image}" alt="${item.name}">
+            <h3>${item.name}</h3>
 
-            <div class="cart-info">
+            <p>${item.price} ₽</p>
 
-                <h3>${item.name}</h3>
-
-                <p>${item.price} ₽</p>
-
-                <div class="cart-controls">
-
-                    <button onclick="minusItem(${index})">−</button>
-
-                    <span>${item.count}</span>
-
-                    <button onclick="plusItem(${index})">+</button>
-
-                </div>
-
-            </div>
-
-            <button class="delete-btn"
-            onclick="removeItem(${index})">
-
-            🗑
-
+            <button onclick="removeItem(${index})">
+                ❌ Удалить
             </button>
 
         </div>
+
         `;
+
     });
 
-    cartCount.innerText = count;
-    total.innerText = "Итого: " + sum + " ₽";
-}
 
-function plusItem(index) {
 
-    cart[index].count++;
+    let totalBox = document.getElementById("cart-total");
 
-    saveCart();
+    if(totalBox){
 
-    updateCart();
-
-}
-
-function minusItem(index) {
-
-    cart[index].count--;
-
-    if (cart[index].count <= 0) {
-
-        cart.splice(index, 1);
+        totalBox.innerHTML =
+        "Итого: " + total + " ₽";
 
     }
 
-    saveCart();
+}
+
+
+
+/* УДАЛЕНИЕ */
+
+function removeItem(index){
+
+    cart.splice(index,1);
 
     updateCart();
 
 }
 
-function removeItem(index) {
 
-    cart.splice(index, 1);
 
-    saveCart();
+/* ОТКРЫТЬ КОРЗИНУ */
 
-    updateCart();
+function openCart(){
 
-}
-
-function openCart() {
-
-    document.getElementById("cart-panel").classList.add("active");
+    document
+    .getElementById("cart-panel")
+    .classList.add("active");
 
 }
 
-function closeCart() {
 
-    document.getElementById("cart-panel").classList.remove("active");
+
+/* ЗАКРЫТЬ КОРЗИНУ */
+
+function closeCart(){
+
+    document
+    .getElementById("cart-panel")
+    .classList.remove("active");
 
 }
 
-function searchTours() {
 
-    let value = document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase();
 
-    let cards = document.querySelectorAll(".card");
+/* ОФОРМЛЕНИЕ ЗАКАЗА */
 
-    cards.forEach(card => {
+function makeOrder(){
 
-        let text = card.innerText.toLowerCase();
+    if(cart.length === 0){
 
-        if (text.includes(value)) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
+        alert("Корзина пустая");
+
+        return;
+
+    }
+
+
+    document.getElementById("call-window").style.display="flex";
+
+}
+
+
+
+/* ЗАКРЫТЬ ОКНО ЗВОНКА */
+
+function closeCallWindow(){
+
+    document.getElementById("call-window").style.display="none";
+
+}
+
+
+
+/* ПОИСК */
+
+function searchTours(){
+
+    let input =
+    document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+
+
+    let cards =
+    document.querySelectorAll(".card");
+
+
+
+    cards.forEach(card=>{
+
+
+        let text =
+        card.innerText.toLowerCase();
+
+
+        if(text.includes(input)){
+
+            card.style.display="block";
+
         }
+        else{
+
+            card.style.display="none";
+
+        }
+
 
     });
 
 }
-function callToOrder() {
-    window.location.href = "tel:+79913825202";
+
+
+
+/* ТЁМНАЯ ТЕМА */
+
+function toggleTheme(){
+
+    document.body.classList.toggle("dark");
+
+
+    let button =
+    document.querySelector(".theme-button");
+
+
+    if(document.body.classList.contains("dark")){
+
+
+        if(button){
+            button.innerHTML="☀️";
+        }
+
+
+        localStorage.setItem(
+            "theme",
+            "dark"
+        );
+
+
+    }else{
+
+
+        if(button){
+            button.innerHTML="🌙";
+        }
+
+
+        localStorage.setItem(
+            "theme",
+            "light"
+        );
+
+    }
+
+}
+
+
+
+
+/* СОХРАНЕНИЕ ТЕМЫ */
+
+window.addEventListener("load",function(){
+
+
+    if(localStorage.getItem("theme") === "dark"){
+
+
+        document.body.classList.add("dark");
+
+
+        let button =
+        document.querySelector(".theme-button");
+
+
+        if(button){
+
+            button.innerHTML="☀️";
+
+        }
+
+
+    }
+
+
+});
+/* =========================
+   МОБИЛЬНАЯ ВЕРСИЯ ZELYKTUR
+========================= */
+
+
+@media (max-width: 768px) {
+
+
+/* HEADER */
+
+.header {
+
+    padding:15px;
+
+    flex-wrap:wrap;
+
+}
+
+
+.logo img {
+
+    width:45px;
+    height:45px;
+
+}
+
+
+.logo h1 {
+
+    font-size:22px;
+
+}
+
+
+.logo p {
+
+    font-size:11px;
+
+}
+
+
+/* скрываем обычное меню */
+
+.header nav {
+
+    display:none;
+
+}
+
+
+
+/* кнопки */
+
+.theme-button,
+.cart-button {
+
+    width:42px;
+    height:42px;
+
+}
+
+
+/* HERO */
+
+.hero {
+
+    min-height:520px;
+
+}
+
+
+.hero-content {
+
+    padding:25px;
+
+    text-align:center;
+
+}
+
+
+.hero h2 {
+
+    font-size:30px;
+
+}
+
+
+.hero p {
+
+    font-size:16px;
+
+}
+
+
+
+/* кнопки */
+
+.hero-buttons {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+
+.btn-primary,
+.btn-secondary {
+
+    width:100%;
+
+    text-align:center;
+
+    padding:16px;
+
+}
+
+
+
+/* ПОИСК */
+
+.search {
+
+    padding:15px;
+
+}
+
+
+.search input {
+
+    width:100%;
+
+    height:50px;
+
+    border-radius:20px;
+
+}
+
+
+
+/* КАРТОЧКИ */
+
+.cards {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    padding:15px;
+
+}
+
+
+.card {
+
+    width:100%;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+}
+
+
+
+.card img {
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+}
+
+
+
+.card-content {
+
+    padding:20px;
+
+}
+
+
+
+.card h3 {
+
+    font-size:24px;
+
+}
+
+
+
+/* кнопки карточки */
+
+.buttons {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+
+
+.details-btn,
+.cart-btn {
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:15px;
+
+}
+
+
+
+/* ГАЛЕРЕЯ */
+
+.gallery-grid {
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+}
+
+
+.gallery-grid img {
+
+    height:140px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+}
+
+
+
+/* О НАС */
+
+.advantages {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+
+
+.advantage {
+
+    border-radius:20px;
+
+    padding:20px;
+
+}
+
+
+
+/* КОНТАКТЫ */
+
+.contact-card {
+
+    margin:15px;
+
+    padding:25px;
+
+    border-radius:25px;
+
+}
+
+
+/* МОБИЛЬНАЯ НАВИГАЦИЯ */
+
+.mobile-nav {
+
+    position:fixed;
+
+    bottom:0;
+
+    left:0;
+
+    right:0;
+
+    height:75px;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    z-index:1000;
+
+}
+
+
+
+.mobile-nav a,
+.mobile-nav button {
+
+    font-size:12px;
+
+}
+
+
+
+.mobile-nav span {
+
+    font-size:25px;
+
+}
+
+
+
+/* КОРЗИНА */
+
+#cart-panel {
+
+    width:100%;
+
+    height:90%;
+
+    bottom:0;
+
+    top:auto;
+
+    border-radius:30px 30px 0 0;
+
+}
+
+
+/* ОКНО ЗВОНКА */
+
+.call-box {
+
+    width:90%;
+
+    border-radius:30px;
+
+}
+
+
+
+/* FOOTER */
+
+footer {
+
+    padding-bottom:100px;
+
+}
+
+
 }

@@ -2,434 +2,940 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Zelytour — Путешествия по Калининградской области</title>
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Zelyktur — Путешествия по Калининградской области</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 
 </head>
 
+
 <body>
+
+
+<!-- HEADER -->
 
 <header class="header">
 
-    <div class="logo">
 
-        <img src="images/logo.png" alt="Zelytour">
+<div class="logo">
 
-        <div>
 
-            <h1>Zelytour</h1>
+<img src="images/logo.png" alt="Zelyktur">
 
-            <p>Путешествия по Калининградской области</p>
 
-        </div>
+<div>
 
-    </div>
+<h1>Zelyktur</h1>
 
-    <nav>
+<p>
+Путешествия по Калининградской области
+</p>
 
-        <a href="#places">Места</a>
-
-        <a href="#gallery">Галерея</a>
-
-        <a href="#about">О нас</a>
-
-        <a href="#contacts">Контакты</a>
-
-    </nav>
-
-    <button class="cart-button" onclick="openCart()">
-
-        🛒
-
-        <span id="cart-count">0</span>
-
-    </button>
-
-</header>
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <h2>
-            Откройте самые красивые места Балтийского побережья
-        </h2>
-
-        <p>
-
-            Куршская коса, Светлогорск, Янтарный,
-            Балтийск, Калининград и десятки других мест
-            ждут вас.
-
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#places" class="btn-primary">
-                Смотреть экскурсии
-            </a>
-
-            <a href="#about" class="btn-secondary">
-                О компании
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section class="search">
-
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="🔍 Найти экскурсию..."
-        onkeyup="searchTours()">
-
-</section>
-
-<section class="places" id="places">
-
-<h2>
-
-Популярные экскурсии
-
-</h2>
-
-<div class="cards">
-<article class="card">
-
-    <img src="images/kurshskaya.jpg" alt="Куршская коса">
-
-    <div class="card-content">
-
-        <span class="distance">📍 42 км от Зеленоградска</span>
-
-        <h3>Куршская коса</h3>
-
-        <p>
-            Огромные песчаные дюны, Танцующий лес,
-            Высота Эфа и лучшие виды Балтийского моря.
-        </p>
-
-        <div class="price">
-            💰 3000 ₽ / человек
-        </div>
-
-        <div class="buttons">
-
-            <a href="kosa.html" class="details-btn">
-                Подробнее
-            </a>
-
-            <button onclick="addTour(
-                'Куршская коса',
-                3000,
-                'images/kurshskaya.jpg'
-            )" class="cart-btn">
-
-                🛒 В корзину
-
-            </button>
-
-        </div>
-
-    </div>
-
-</article>
-
-<article class="card">
-
-    <img src="images/svetlogorsk.jpg" alt="Светлогорск">
-
-    <div class="card-content">
-
-        <span class="distance">📍 38 км от Зеленоградска</span>
-
-        <h3>Светлогорск</h3>
-
-        <p>
-            Курортный город с красивой набережной,
-            канатной дорогой и водонапорной башней.
-        </p>
-
-        <div class="price">
-            💰 2500 ₽ / человек
-        </div>
-
-        <div class="buttons">
-
-            <a href="svetlogorsk.html" class="details-btn">
-                Подробнее
-            </a>
-
-            <button onclick="addTour(
-                'Светлогорск',
-                2500,
-                'images/svetlogorsk.jpg'
-            )" class="cart-btn">
-
-                🛒 В корзину
-
-            </button>
-
-        </div>
-
-    </div>
-
-</article>
-
-<article class="card">
-
-    <img src="images/yantarny.jpg" alt="Янтарный">
-
-    <div class="card-content">
-
-        <span class="distance">📍 55 км от Зеленоградска</span>
-
-        <h3>Янтарный</h3>
-
-        <p>
-            Лучший пляж области, янтарный комбинат
-            и знаменитый парк Беккера.
-        </p>
-
-        <div class="price">
-            💰 2700 ₽ / человек
-        </div>
-
-        <div class="buttons">
-
-            <a href="yantarny.html" class="details-btn">
-                Подробнее
-            </a>
-
-            <button onclick="addTour(
-                'Янтарный',
-                2700,
-                'images/yantarny.jpg'
-            )" class="cart-btn">
-
-                🛒 В корзину
-
-            </button>
-
-        </div>
-
-    </div>
-
-</article>
-
-<article class="card">
-
-    <img src="images/baltiysk.jpg" alt="Балтийск">
-
-    <div class="card-content">
-
-        <span class="distance">📍 70 км от Зеленоградска</span>
-
-        <h3>Балтийск</h3>
-
-        <p>
-            Самый западный город России,
-            маяк, крепость Пиллау и военные корабли.
-        </p>
-
-        <div class="price">
-            💰 2900 ₽ / человек
-        </div>
-
-        <div class="buttons">
-
-            <a href="baltiysk.html" class="details-btn">
-                Подробнее
-            </a>
-
-            <button onclick="addTour(
-                'Балтийск',
-                2900,
-                'images/baltiysk.jpg'
-            )" class="cart-btn">
-
-                🛒 В корзину
-
-            </button>
-
-        </div>
-
-    </div>
-
-</article>
 
 </div>
 
+
+</div>
+
+
+
+<nav>
+
+<a href="#places">
+Места
+</a>
+
+
+<a href="#gallery">
+Галерея
+</a>
+
+
+<a href="#about">
+О нас
+</a>
+
+
+<a href="#contacts">
+Контакты
+</a>
+
+
+</nav>
+
+<button class="theme-button" onclick="toggleTheme()">
+🌙
+</button>
+<button class="cart-button" onclick="openCart()">
+
+🛒
+
+<span id="cart-count">
+0
+</span>
+
+
+</button>
+
+
+
+</header>
+
+
+
+
+
+
+<!-- HERO -->
+
+
+<section class="hero">
+
+
+<div class="hero-content">
+
+
+<h2>
+Откройте самые красивые места Балтийского побережья
+</h2>
+
+
+<p>
+Куршская коса, Светлогорск, Янтарный,
+Балтийск и другие места ждут вас.
+</p>
+
+
+
+<div class="hero-buttons">
+
+
+<a href="#places" class="btn-primary">
+
+Смотреть экскурсии
+
+</a>
+
+
+
+<a href="#about" class="btn-secondary">
+
+О компании
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
 </section>
+<!-- SEARCH -->
+
+<section class="search">
+
+<input
+type="text"
+id="searchInput"
+placeholder="🔍 Найти экскурсию..."
+onkeyup="searchTours()">
+
+</section>
+
+
+
+
+
+<!-- PLACES -->
+
+
+<section class="places" id="places">
+
+
+<h2>
+Популярные экскурсии
+</h2>
+
+
+
+<div class="cards">
+
+
+
+
+
+<!-- КУРШСКАЯ КОСА -->
+
+
+<article class="card">
+
+
+<img src="images/kurshskaya.jpg" alt="Куршская коса">
+
+
+
+<div class="card-content">
+
+
+<span class="distance">
+
+📍 42 км от Зеленоградска
+
+</span>
+
+
+
+<h3>
+Куршская коса
+</h3>
+
+
+
+<p>
+
+Дюны, Танцующий лес,
+Высота Эфа и море.
+
+</p>
+
+
+
+<div class="price">
+
+💰 2500 ₽ / человек
+
+</div>
+
+
+
+
+<div class="buttons">
+
+
+<a href="kosa.html" class="details-btn">
+
+Подробнее
+
+</a>
+
+
+
+<button class="cart-btn"
+onclick="addTour(
+'Куршская коса',
+2500,
+'images/kurshskaya.jpg'
+)">
+
+🛒 В корзину
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+
+<!-- СВЕТЛОГОРСК -->
+
+
+<article class="card">
+
+
+<img src="images/svetlogorsk.jpg" alt="Светлогорск">
+
+
+
+<div class="card-content">
+
+
+<span class="distance">
+
+📍 38 км от Зеленоградска
+
+</span>
+
+
+
+<h3>
+Светлогорск
+</h3>
+
+
+
+<p>
+
+Набережная, канатная дорога
+и красивый курорт.
+
+</p>
+
+
+
+<div class="price">
+
+💰 2500 ₽ / человек
+
+</div>
+
+
+
+
+<div class="buttons">
+
+
+<a href="svetlogorsk.html" class="details-btn">
+
+Подробнее
+
+</a>
+
+
+
+<button class="cart-btn"
+onclick="addTour(
+'Светлогорск',
+2500,
+'images/svetlogorsk.jpg'
+)">
+
+🛒 В корзину
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+
+<!-- ЯНТАРНЫЙ -->
+
+
+<article class="card">
+
+
+<img src="images/yantarny.jpg" alt="Янтарный">
+
+
+
+<div class="card-content">
+
+
+<span class="distance">
+
+📍 55 км от Зеленоградска
+
+</span>
+
+
+
+<h3>
+Янтарный
+</h3>
+
+
+
+<p>
+
+Лучший пляж области,
+янтарный комбинат.
+
+</p>
+
+
+
+<div class="price">
+
+💰 2700 ₽ / человек
+
+</div>
+
+
+
+
+<div class="buttons">
+
+
+<a href="yantarny.html" class="details-btn">
+
+Подробнее
+
+</a>
+
+
+
+<button class="cart-btn"
+onclick="addTour(
+'Янтарный',
+2700,
+'images/yantarny.jpg'
+)">
+
+🛒 В корзину
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</article>
+<!-- БАЛТИЙСК -->
+
+
+<article class="card">
+
+
+<img src="images/baltiysk.jpg" alt="Балтийск">
+
+
+
+<div class="card-content">
+
+
+<span class="distance">
+
+📍 70 км от Зеленоградска
+
+</span>
+
+
+
+<h3>
+Балтийск
+</h3>
+
+
+
+<p>
+
+Самый западный город России,
+маяк, крепость Пиллау.
+
+</p>
+
+
+
+<div class="price">
+
+💰 2900 ₽ / человек
+
+</div>
+
+
+
+
+<div class="buttons">
+
+
+<a href="baltiysk.html" class="details-btn">
+
+Подробнее
+
+</a>
+
+
+
+<button class="cart-btn"
+onclick="addTour(
+'Балтийск',
+2900,
+'images/baltiysk.jpg'
+)">
+
+🛒 В корзину
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- ГАЛЕРЕЯ -->
+
+
 <section class="gallery" id="gallery">
 
-    <h2>📸 Галерея</h2>
 
-    <p class="section-text">
-        Самые красивые места Калининградской области.
-    </p>
+<h2>
+📸 Галерея
+</h2>
 
-    <div class="gallery-grid">
 
-        <img src="images/kurshskaya.jpg" alt="Куршская коса">
 
-        <img src="images/svetlogorsk.jpg" alt="Светлогорск">
+<p class="section-text">
 
-        <img src="images/yantarny.jpg" alt="Янтарный">
+Самые красивые места Калининградской области.
 
-        <img src="images/baltiysk.jpg" alt="Балтийск">
+</p>
 
-        <img src="images/kaliningrad.jpg" alt="Калининград">
 
-        <img src="images/filinskaya.jpg" alt="Филинская бухта">
 
-    </div>
+
+<div class="gallery-grid">
+
+
+<img src="images/kurshskaya.jpg">
+
+
+<img src="images/svetlogorsk.jpg">
+
+
+<img src="images/yantarny.jpg">
+
+
+<img src="images/baltiysk.jpg">
+
+
+<img src="images/kaliningrad.jpg">
+
+
+<img src="images/filinskaya.jpg">
+
+
+</div>
+
 
 </section>
+
+
+
+
+
+
+
+<!-- О НАС -->
 
 
 <section class="about" id="about">
 
-    <h2>🌊 О Zelytour</h2>
 
-    <p class="about-text">
+<h2>
+🌊 О Zelyktur
+</h2>
 
-        Zelytour — туристический сайт, посвящённый
-        путешествиям по Калининградской области.
 
-        Мы помогаем найти лучшие экскурсии,
-        красивые места, маршруты и интересные
-        достопримечательности Балтийского побережья.
 
-    </p>
+<p class="about-text">
 
-    <div class="advantages">
+Zelyktur — туристический сайт,
+посвящённый путешествиям
+по Калининградской области.
 
-        <div class="advantage">
+<br><br>
 
-            🌲
+Мы помогаем найти лучшие экскурсии,
+маршруты и красивые места
+Балтийского побережья.
 
-            <h3>Природа</h3>
+</p>
 
-            <p>
-                Национальные парки, дюны,
-                леса и побережье Балтийского моря.
-            </p>
 
-        </div>
 
-        <div class="advantage">
 
-            🏰
+<div class="advantages">
 
-            <h3>История</h3>
 
-            <p>
-                Старые немецкие города,
-                крепости и музеи.
-            </p>
+<div class="advantage">
 
-        </div>
 
-        <div class="advantage">
+<h3>
+🌲 Природа
+</h3>
 
-            ⭐
 
-            <h3>Лучшие экскурсии</h3>
+<p>
 
-            <p>
-                Только самые интересные маршруты
-                Калининградской области.
-            </p>
+Дюны, леса и Балтийское море.
 
-        </div>
+</p>
 
-    </div>
+
+</div>
+
+
+
+
+<div class="advantage">
+
+
+<h3>
+🏰 История
+</h3>
+
+
+<p>
+
+Крепости, города и музеи.
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="advantage">
+
+
+<h3>
+⭐ Лучшие маршруты
+</h3>
+
+
+<p>
+
+Интересные экскурсии области.
+
+</p>
+
+
+</div>
+
+
+</div>
+
 
 </section>
+<!-- CONTACTS -->
 
 
 <section class="contacts" id="contacts">
 
-    <h2>📞 Контакты</h2>
 
-    <div class="contact-card">
+<h2>
+📞 Контакты
+</h2>
 
-        <h3>Zelytour</h3>
 
-        <p>📍 Зеленоградск, Калининградская область</p>
 
-        <p>📞 +7 (991) 382-52-02</p>
 
-        <p>🕘 Ежедневно 09:00–21:00</p>
+<div class="contact-card">
 
-        <a class="map-button"
-           href="https://yandex.ru/maps/"
-           target="_blank">
 
-            🗺 Открыть карту
+<h3>
+Zelyktur
+</h3>
 
-        </a>
 
-    </div>
+<p>
+📍 Зеленоградск, Калининградская область
+</p>
+
+
+<p>
+📞 +7 (991) 382-52-02
+</p>
+
+
+<p>
+🕘 Ежедневно 09:00–21:00
+</p>
+
+
+
+<a 
+href="https://yandex.ru/maps/"
+target="_blank"
+class="map-button">
+
+🗺 Открыть карту
+
+</a>
+
+
+</div>
+
 
 </section>
 
 
+
+
+
+
+
+<!-- МОБИЛЬНАЯ НАВИГАЦИЯ -->
+
+
+<div class="mobile-nav">
+
+
+<a href="#places">
+
+<span>
+🗺️
+</span>
+
+<small>
+Места
+</small>
+
+</a>
+
+
+
+
+<a href="#gallery">
+
+<span>
+📸
+</span>
+
+<small>
+Галерея
+</small>
+
+</a>
+
+
+
+
+<a href="#about">
+
+<span>
+ℹ️
+</span>
+
+<small>
+О нас
+</small>
+
+</a>
+
+
+
+
+<button onclick="openCart()">
+
+<span>
+🛒
+</span>
+
+<small>
+Корзина
+</small>
+
+
+<b id="mobile-cart-count">
+0
+</b>
+
+
+</button>
+
+
+
+
+<a href="#contacts">
+
+<span>
+📞
+</span>
+
+<small>
+Контакты
+</small>
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- FOOTER -->
+
+
 <footer>
 
-    <h3>Zelytour</h3>
 
-    <p>
-        © 2026 Все права защищены.
-    </p>
+<h3>
+Zelyktur
+</h3>
+
+
+<p>
+© 2026 Все права защищены.
+</p>
+
 
 </footer>
 
+
+
+
+
+
+
+
+<!-- CART -->
+
+
 <div id="cart-panel">
 
-    <div class="cart-header">
 
-        <h2>🛒 Корзина</h2>
 
-        <button onclick="closeCart()">
-            ✕
-        </button>
+<div class="cart-header">
 
-    </div>
 
-    <div id="cart-items">
+<h2>
+🛒 Корзина
+</h2>
 
-    </div>
 
-    <div class="cart-footer">
 
-        <h3 id="cart-total">
-            Итого: 0 ₽
-        </h3>
-<button class="order-button" onclick="callToOrder()">
-    📞 Оплатить и позвонить
+<button onclick="closeCart()">
+
+✕
+
 </button>
+
+
+</div>
+
+
+
+
+<div id="cart-items">
+
+</div>
+
+
+
+
+
+<div class="cart-footer">
+
+
+<h3 id="cart-total">
+
+Итого: 0 ₽
+
+</h3>
+
+
+
+
+<button 
+class="order-button"
+onclick="makeOrder()">
+
+Оформить заказ
+
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
+<!-- ОКНО ЗВОНКА -->
+
+<div id="call-window">
+
+    <div class="call-box">
+
+        <div class="call-icon">
+            🚕
+        </div>
+
+        <h2>
+            Заказ почти готов!
+        </h2>
+
+        <p>
+            Чтобы уточнить детали заказа,
+            позвоните нам:
+        </p>
+
+        <h3>
+            +7 (991) 382-52-02
+        </h3>
+
+        <p>
+            Мы уточним маршрут,
+            время и стоимость поездки.
+        </p>
+
+
+        <a href="tel:+79913825202" class="call-button">
+            📞 Позвонить
+        </a>
+
+
+        <button onclick="closeCallWindow()" class="close-call">
+            Закрыть
+        </button>
 
     </div>
 
 </div>
 
 
+
 <script src="script.js"></script>
+
 
 </body>
 
